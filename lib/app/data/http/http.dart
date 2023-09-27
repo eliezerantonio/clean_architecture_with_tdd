@@ -72,7 +72,7 @@ class Http {
 
       switch (method) {
         case HttpMethod.get:
-          response = await _client.get(url).timeout(timeout);
+          response = await _client.get(url, headers: headers).timeout(timeout);
           break;
         case HttpMethod.post:
           response = await _client

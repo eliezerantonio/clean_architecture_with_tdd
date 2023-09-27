@@ -58,6 +58,7 @@ dev_dependencies:
     sdk: flutter
   freezed: ^2.3.0
   json_serializable: ^6.5.4
+  mockito: ^5.4.2
   slang_build_runner: ^3.7.0
 
 # For information on the generic Dart part of this file, see the
