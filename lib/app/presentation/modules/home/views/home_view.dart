@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../inject_repositories.dart';
 import '../../../global/widgets/my_scaffold.dart';
 import '../../../routes/routes.dart';
 import '../controller/home_controller.dart';
@@ -23,7 +24,7 @@ class _HomeViewState extends State<HomeView> {
       key: Key('home-$languageCode'),
       create: (_) => HomeController(
         HomeState(),
-        trendingRepository: context.read(),
+        trendingRepository: Repositories.trending,
       )..init(),
       child: MyScaffold(
         appBar: AppBar(
@@ -58,8 +59,8 @@ class _HomeViewState extends State<HomeView> {
                 physics: const AlwaysScrollableScrollPhysics(),
                 child: SizedBox(
                   height: constraints.maxHeight,
-                  child: Column(
-                    children: const [
+                  child: const Column(
+                    children: [
                       SizedBox(height: 10),
                       TrendingList(),
                       SizedBox(height: 20),

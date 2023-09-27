@@ -1,9 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../../../domain/repositories/connectivity_repository.dart';
+import '../../../../inject_repositories.dart';
 import '../../../routes/routes.dart';
 
 class OfflineView extends StatefulWidget {
@@ -19,8 +18,7 @@ class _OfflineViewState extends State<OfflineView> {
   void initState() {
     super.initState();
 
-    _subscription =
-        context.read<ConnectivityRepository>().onInternetChanged.listen(
+    _subscription = Repositories.connectivity.onInternetChanged.listen(
       (connected) {
         if (connected) {
           Navigator.pushReplacementNamed(

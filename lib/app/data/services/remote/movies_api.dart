@@ -3,7 +3,6 @@ import '../../../domain/failures/http_request/http_request_failure.dart';
 import '../../../domain/models/movie/movie.dart';
 import '../../../domain/models/peformer/performer.dart';
 import '../../http/http.dart';
-import '../local/language_service.dart';
 import '../utils/handle_failure.dart';
 
 class MoviesAPI {
@@ -11,14 +10,12 @@ class MoviesAPI {
 
   MoviesAPI(
     this._http,
-    this._languageService,
   );
-  final LanguageService _languageService;
 
   Future<Either<HttpRequestFailure, Movie>> getMovieById(int id) async {
     final result = await _http.request(
       '/movie/$id',
-      languageCode: _languageService.languageCode,
+      languageCode: 'pt-Pt',
       onSuccess: (json) {
         return Movie.fromJson(json);
       },
@@ -34,7 +31,7 @@ class MoviesAPI {
   ) async {
     final result = await _http.request(
       '/movie/$movieId/credits',
-      languageCode: _languageService.languageCode,
+      languageCode: 'pt-Pt',
       onSuccess: (json) {
         final list = json['cast'] as List;
         return list

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../generated/translations.g.dart';
 import '../../../../routes/routes.dart';
 import '../../controller/sign_in_controller.dart';
 
@@ -17,13 +16,13 @@ class SubmitButton extends StatelessWidget {
 
     return MaterialButton(
       onPressed: () {
-        final isValid = Form.of(context)!.validate();
+        final isValid = Form.of(context).validate();
         if (isValid) {
           _submit(context);
         }
       },
       color: Colors.blue,
-      child: Text(texts.signIn.signIn),
+      child: const Text('Iniciar Sesión'),
     );
   }
 
@@ -39,11 +38,11 @@ class SubmitButton extends StatelessWidget {
     result.when(
       left: (failure) {
         final message = failure.when(
-          notFound: () => texts.signIn.errors.submit.notFound,
-          network: () => texts.signIn.errors.submit.network,
-          unauthorized: () => texts.signIn.errors.submit.unauthorized,
-          unknown: () => texts.signIn.errors.submit.unknown,
-          notVerified: () => texts.signIn.errors.submit.notVerified,
+          notFound: () => 'Usuario no encontrado',
+          network: () => 'Error de conexión',
+          unauthorized: () => 'Contraseña inválida',
+          unknown: () => 'Error',
+          notVerified: () => 'Email no verificado',
         );
 
         ScaffoldMessenger.of(context).showSnackBar(

@@ -4,7 +4,7 @@ Future<T> showLoader<T>(
   BuildContext context,
   Future<T> future,
 ) async {
-  final overlayState = Overlay.of(context)!;
+  final overlayState = Overlay.of(context);
   final entry = OverlayEntry(
     builder: (_) => Container(
       color: Colors.black45,

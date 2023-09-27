@@ -1,10 +1,11 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-class FavoritesAppBar extends StatelessWidget with PreferredSizeWidget {
+class FavoritesAppBar extends StatelessWidget implements PreferredSizeWidget {
   const FavoritesAppBar({
-    super.key,
+    Key? key,
     required this.tabController,
-  });
+  }) : super(key: key);
   final TabController tabController;
 
   @override

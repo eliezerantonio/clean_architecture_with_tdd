@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../generated/translations.g.dart';
+import '../../../../inject_repositories.dart';
 import '../controller/sign_in_controller.dart';
 import '../controller/state/sign_in_state.dart';
 import 'widgets/submit_button.dart';
@@ -16,7 +16,7 @@ class SignInView extends StatelessWidget {
         const SignInState(),
         sessionController: context.read(),
         favoritesController: context.read(),
-        authenticationRepository: context.read(),
+        authenticationRepository: Repositories.authentication,
       ),
       child: Scaffold(
         body: SafeArea(
@@ -25,10 +25,8 @@ class SignInView extends StatelessWidget {
             child: Form(
               child: Builder(
                 builder: (context) {
-                  final controller = Provider.of<SignInController>(
-                    context,
-                    listen: true,
-                  );
+                  final controller =
+                      Provider.of<SignInController>(context, listen: true);
                   return AbsorbPointer(
                     absorbing: controller.state.fetching,
                     child: Column(
@@ -39,13 +37,13 @@ class SignInView extends StatelessWidget {
                           onChanged: (text) {
                             controller.onUsernameChanged(text);
                           },
-                          decoration: InputDecoration(
-                            hintText: texts.signIn.username,
+                          decoration: const InputDecoration(
+                            hintText: 'Username',
                           ),
                           validator: (text) {
                             text = text?.trim().toLowerCase() ?? '';
                             if (text.isEmpty) {
-                              return texts.signIn.errors.username;
+                              return 'username';
                             }
                             return null;
                           },
@@ -56,13 +54,13 @@ class SignInView extends StatelessWidget {
                           onChanged: (text) {
                             controller.onPasswordChanged(text);
                           },
-                          decoration: InputDecoration(
-                            hintText: texts.signIn.password,
+                          decoration: const InputDecoration(
+                            hintText: 'Password',
                           ),
                           validator: (text) {
                             text = text?.replaceAll(' ', '') ?? '';
                             if (text.length < 4) {
-                              return texts.signIn.errors.password;
+                              return 'Senha invalida';
                             }
                             return null;
                           },

@@ -5,14 +5,19 @@ import '../../domain/repositories/preferences_repository.dart';
 
 class PreferencesRepositoryImpl implements PreferencesRepository {
   final SharedPreferences _preferences;
+  final bool _systemDarkMode;
 
-  PreferencesRepositoryImpl(this._preferences);
+  PreferencesRepositoryImpl(
+    this._preferences,
+    this._systemDarkMode,
+  );
 
   @override
-  bool? get darkMode {
+  bool get darkMode {
     return _preferences.getBool(
-      Preference.darkMode.name,
-    );
+          Preference.darkMode.name,
+        ) ??
+        _systemDarkMode;
   }
 
   @override

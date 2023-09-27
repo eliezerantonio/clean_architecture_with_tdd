@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 import 'domain/repositories/language_repository.dart';
 import 'generated/assets.gen.dart';
-import 'generated/translations.g.dart';
+// import 'generated/translations.g.dart';
 import 'presentation/global/controllers/theme_controller.dart';
 import 'presentation/global/theme.dart';
 import 'presentation/routes/app_routes.dart';
@@ -33,9 +33,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             locale.languageCode,
           );
       Intl.defaultLocale = locale.toLanguageTag();
-      LocaleSettings.setLocaleRaw(
-        locale.languageCode,
-      );
+      // LocaleSettings.setLocaleRaw(
+      //   locale.languageCode,
+      // );
     }
   }
 
@@ -61,8 +61,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           GlobalCupertinoLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
         ],
-        supportedLocales: LocaleSettings.supportedLocales,
-        locale: TranslationProvider.of(context).flutterLocale,
+        // supportedLocales: LocaleSettings.supportedLocales,
+        // locale: TranslationProvider.of(context).flutterLocale,
         onUnknownRoute: (_) => MaterialPageRoute(
           builder: (_) => Scaffold(
             body: Center(

@@ -1,11 +1,10 @@
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../../../../domain/either/either.dart';
 import '../../../../../domain/failures/http_request/http_request_failure.dart';
 import '../../../../../domain/models/peformer/performer.dart';
-import '../../../../../domain/repositories/movies_repository.dart';
+import '../../../../../inject_repositories.dart';
 import '../../../../global/extensions/build_context_ext.dart';
 import '../../../../global/utils/get_image_url.dart';
 import '../../../../global/widgets/request_failed.dart';
@@ -28,9 +27,9 @@ class _MovieCastState extends State<MovieCast> {
   }
 
   void _initFuture() {
-    _future = context.read<MoviesRepository>().getCastByMovie(
-          widget.movieId,
-        );
+    _future = Repositories.movies.getCastByMovie(
+      widget.movieId,
+    );
   }
 
   @override

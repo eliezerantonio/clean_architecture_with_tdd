@@ -5,7 +5,7 @@ import '../../../../global/controllers/favorites/favorites_controller.dart';
 import '../../../../utils/mark_as_favorite.dart';
 import '../../controller/movie_controller.dart';
 
-class MovieAppBar extends StatelessWidget with PreferredSizeWidget {
+class MovieAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MovieAppBar({super.key});
 
   @override
