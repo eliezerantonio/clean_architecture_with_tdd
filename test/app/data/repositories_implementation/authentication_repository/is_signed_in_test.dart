@@ -6,7 +6,7 @@ import 'package:tv/app/data/services/local/session_service.dart';
 import 'package:tv/app/data/services/remote/account_api.dart';
 import 'package:tv/app/data/services/remote/authentication_api.dart';
 
-import '../../mocks.dart';
+import '../../../mocks.dart';
 
 void main() {
   group('AuthenticationRepositoryImplementation >', () {
@@ -46,5 +46,8 @@ void main() {
       final isSignedIn = await repository.isSignedIn;
       expect(isSignedIn, false);
     });
+
+
+    
   });
 }
