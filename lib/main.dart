@@ -25,7 +25,7 @@ void main() async {
   final http = Http(
     client: Client(),
     baseUrl: 'https://api.themoviedb.org/3',
-    apiKey: 'Your key',
+    apiKey: '4248991ee7e5702debde74e854effa57',
   );
 
   final systemDarkMode = ui.window.platformBrightness == Brightness.dark;
